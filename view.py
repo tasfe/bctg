@@ -3,10 +3,14 @@ Created on 2012-1-17
 
 @author: kom
 '''
-import tornado.ioloop
-import tornado.web
+import web
+import os
+from common import *
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("index.html")
+class IndexHandler:
+    def GET(self):
+        return render('index.html')
 
+class EmailHandler:
+    def GET(self):
+        return render('email.html')

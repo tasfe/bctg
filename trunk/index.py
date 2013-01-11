@@ -5,28 +5,18 @@ Created on 2012-1-13
 @author: kom
 '''
 
-import tornado
-import tornado.web
-import tornado.ioloop
-from tornado.httpserver import HTTPServer
+import web
+from urls import url
+import os
 from view import *
-import urls, settings
+from common import *
+
+app = web.application(url, globals())
+app.add_processor(load_sqla)
 
 
-class Application(tornado.web.Application):
-    def __init__(self):
-        self.settings= settings.setting
-        self.handlers= urls.handler
-        tornado.web.Application.__init__(self, self.handlers, **self.settings)
-
-def Main(port):
-    app = Application()
-    #tornado.options.parse_command_line()
-    #print 'start up ......'
-    server = HTTPServer(app)
-    server.listen(port)
-    tornado.ioloop.IOLoop.instance().start()
-
-if __name__ == '__main__':
-    #Main(int(sys.argv[1]))
-    Main(8888)
+if __name__ == "__main__":
+    if os.name == "posix":
+        web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
+        #web.wsgi.runwsgi = lambda func, addr=None: web.wsgi.runfcgi(func, addr)
+    app.run()

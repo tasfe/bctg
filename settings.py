@@ -15,3 +15,10 @@ setting=dict(
     static_path = os.path.join(os.path.dirname(__file__), "static"),
     debug=True,
     )
+
+if dbname == 'sqlite':
+    engine = create_engine(dbname+':///'+dbaddress, echo=Echo)
+else:
+    engine = create_engine(dbname+'://'+dbuser+':'+dbpassword+'@'+dbaddress+':'+dbport+'/'+dbdbase+'?charset=utf8',echo=Echo)
+
+Session = sessionmaker(bind=engine)

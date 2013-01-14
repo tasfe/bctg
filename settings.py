@@ -5,6 +5,7 @@ Created on 2011-12-7
 '''
 import os
 
+
 setting=dict(
     apiurl = 'http://gw.api.tbsandbox.com/router/rest',
     appkey = '12443826',
@@ -16,9 +17,13 @@ setting=dict(
     debug=True,
     )
 
-if dbname == 'sqlite':
-    engine = create_engine(dbname+':///'+dbaddress, echo=Echo)
-else:
-    engine = create_engine(dbname+'://'+dbuser+':'+dbpassword+'@'+dbaddress+':'+dbport+'/'+dbdbase+'?charset=utf8',echo=Echo)
+dbname="mysql"
+dbuser="bctg"
+dbpassword="bctg"
+dbaddress="127.0.0.1"
+dbport="8306"
+dbdbase="bctg"
+Echo=True
 
-Session = sessionmaker(bind=engine)
+
+#Session = sessionmaker(bind=engine)

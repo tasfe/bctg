@@ -53,10 +53,12 @@ class CatModel(Base):
 class TaskModel(Base):
     __tablename__ = 'task'
     id = Column(Integer, primary_key=True)
+    custid = Column(Integer, doc="发起任务的用户id")
     toCatid= Column(Integer(5),doc="发送目标的类目id")
     content = Column(Text,doc="发送内容")
     status = Column(Integer(2),doc="状态：0，未发送；1，发送成功；2，开始发送；3，发送失败")
-    def __init__(self, toCatid=0,content="",status=-1):
+    def __init__(self, custid=0,toCatid=0,content="",status=-1):
+        self.custid = custid
         self.toCatid = toCatid
         self.content = content
         self.status = status

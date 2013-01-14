@@ -10,7 +10,3 @@ from common import *
 class IndexHandler:
     def GET(self):
         return render('index.html')
-
-class EmailHandler:
-    def GET(self):
-        return render('email.html')

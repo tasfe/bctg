@@ -9,7 +9,7 @@ import web
 from urls import url
 import os
 from view import *
-#from common import *
+from common import *
 
 app = web.application(url, globals())
 app.add_processor(load_sqla)

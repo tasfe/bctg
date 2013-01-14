@@ -6,7 +6,7 @@ import web
 from jinja2 import Environment,FileSystemLoader
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String
+from settings import *
 
 def render(template_name, **context):
     extensions = context.pop('extensions', [])
@@ -22,7 +22,10 @@ def render(template_name, **context):
     return jinja_env.get_template(template_name).render(context)
 
 
-engine = create_engine('mysql+mysqldb://hostname/dbname?charset=utf8', encoding='utf8' ,echo=True)
+if dbname == 'sqlite':
+    engine = create_engine(dbname+':///'+dbaddress, echo=Echo)
+else:
+    engine = create_engine(dbname+'://'+dbuser+':'+dbpassword+'@'+dbaddress+':'+dbport+'/'+dbdbase+'?charset=utf8',echo=Echo)
 
 def load_sqla(handler):
     web.ctx.orm = scoped_session(sessionmaker(autoflush=True, bind=engine))

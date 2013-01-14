@@ -6,8 +6,9 @@ Created on 2012-1-13
 '''
 
 import web
+from view import *
 
-
-url = ("/", "IndexHandler",
-       "/email", "EmailHandler",
+url = ("/", "view.indexView.IndexHandler",
+       "/email", "view.emailView.EmailHandler",
+       "/startTask","view.emailView.startTaskHandler"
     )

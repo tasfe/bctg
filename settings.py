@@ -4,6 +4,7 @@ Created on 2011-12-7
 @author: kom
 '''
 import os
+import logging
 
 
 setting=dict(
@@ -26,4 +27,13 @@ dbdbase="bctg"
 Echo=True
 
 
+
+BASE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)),os.pardir,"log")
+logFormat = '[%(asctime)s] %(levelname)s %(message)s'
+logFilename = 'vitem.log'
+logLevel = logging.INFO
+#logging.basicConfig(level=logLevel,
+#    format=logFormat,
+#    filename=os.path.join(BASE_PATH,logFilename),
+#    filemode='a')
 #Session = sessionmaker(bind=engine)

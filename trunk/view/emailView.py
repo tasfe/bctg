@@ -10,9 +10,9 @@ from common import *
 
 class EmailHandler:
     def GET(self):
-        return render('email.html')
+        return render('email.html',title="email")
 
-class startTaskHandler:
+class DoMailHandler:
     def POST(self):
         data = web.data()
         print data
@@ -21,3 +21,4 @@ class startTaskHandler:
 class taskHandler:
     def GET(self):
         data=web.data()
+        return "ok"

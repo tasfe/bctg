@@ -9,4 +9,4 @@ from common import *
 
 class IndexHandler:
     def GET(self):
-        return render('index.html')
+        return render('index.html',title="index")

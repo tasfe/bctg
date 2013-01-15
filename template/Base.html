@@ -39,8 +39,15 @@
                 class="active"
               {% endif %}
               ><a href="/email">邮件推广</a></li>
-          <li><a href="#">关于</a></li>
-          <li><a href="#">联系</a></li>
+          <li{% if title=="about" %}
+                class="active"
+            {% endif %}
+              ><a href="#">关于</a></li>
+          <li
+            {% if title=="留言" %}
+                class="active"
+            {% endif %}
+            ><a href="#">联系</a></li>
         </ul>
         <h1>菠菜推广</h1>
       </div>
@@ -51,7 +58,7 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; Company 2012</p>
+        <p>&copy; 菠菜</p>
       </div>
 
     </div> <!-- /container -->

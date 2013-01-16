@@ -29,3 +29,10 @@ class taskModels:
         except Exception,e:
             logging.error("taskModels.getNextTodoTask  Exception:%s" % (e))
             return 0
+
+    def addTask(self,cust_id,cat_id,category_level,content):
+        try:
+            newTask = TaskModel(custid=cust_id,
+                                catid=cat_id,
+                                category_level=category_level,
+                                content=content)

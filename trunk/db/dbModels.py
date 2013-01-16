@@ -54,12 +54,14 @@ class TaskModel(Base):
     __tablename__ = 'task'
     id = Column(Integer, primary_key=True)
     custid = Column(Integer, doc="发起任务的用户id")
-    toCatid= Column(Integer(5),doc="发送目标的类目id")
+    catid= Column(Integer(5),doc="发送目标的类目id")
+    category_level = Column(Integer(2),doc="类目级别")
     content = Column(Text,doc="发送内容")
     status = Column(Integer(2),doc="状态：0，未发送；1，发送成功；2，开始发送；3，发送失败")
-    def __init__(self, custid=0,toCatid=0,content="",status=-1):
+    def __init__(self, custid=0,catid=0,category_level=0,content="",status=-1):
         self.custid = custid
-        self.toCatid = toCatid
+        self.Catid = Catid
+        self.category_level = category_level
         self.content = content
         self.status = status
 

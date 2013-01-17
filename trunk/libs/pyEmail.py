@@ -60,18 +60,15 @@ class Mailer:
         finally :
             smtp.quit()
 def get_mailer() :
-    mailer = Mailer('mail.sohu.com', 'haha', 'hahasecret')
-    mailer.mailfrom('haha@sohu.com')
+    mailer = Mailer('smtp.163.com', 'kom552', 'sleeplion')
+    mailer.mailfrom('kom552@163.com')
     return mailer
 if __name__ == '__main__':
     mailer = get_mailer()
-
-    mailto = sys.argv[1]
-    subject = sys.argv[2]
-    body = sys.stdin.read()
+    mailto = "kom552@163.com"
+    subject = "test pyEmail"
+    body = "<b>This is a test mail for pyEmail</b>"
     mailer.mailto(mailto)
     mailer.mailsubject(subject)
     mailer.html_body(body)
-    if len(sys.argv) == 4 :
-        mailer.addattach(sys.argv[3])
     mailer.send()

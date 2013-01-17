@@ -33,20 +33,20 @@ class CatModel(Base):
     id = Column(Integer, primary_key=True)
     catid= Column(Integer(5),doc="类目id")
     catName = Column(String(40),doc="类目名称")
-    parent_id = Column(Integer(5),doc="父类目id")
-    category_level = Column(Integer(2),doc="类目级别")
+    parentid = Column(Integer(5),doc="父类目id")
+    categorylevel = Column(Integer(2),doc="类目级别")
     status = Column(Integer(2),doc="状态")
-    sort_order = Column(Integer(5),doc="排序值")
-    sort_type = Column(Integer(2),doc="排序类型")
+    sortorder = Column(Integer(5),doc="排序值")
+    sorttype = Column(Integer(2),doc="排序类型")
     updateDate = Column(DateTime,doc="更新时间")
-    def __init__(self, catid=0, catName='', parent_id=0,category_level=0,status=0,sort_order=0,sort_type=0,updateDate=''):
+    def __init__(self, catid=0, catName='', parentid=0,categorylevel=0,status=0,sortorder=0,sorttype=0,updateDate=''):
         self.catid = catid
         self.catName = catName
-        self.parent_id = parent_id
-        self.category_level = category_level
+        self.parentid = parentid
+        self.categorylevel = categorylevel
         self.status = status
-        self.sort_order = sort_order
-        self.sort_type = sort_type
+        self.sortorder = sortorder
+        self.sorttype = sorttype
         self.updateDate = updateDate
 
 

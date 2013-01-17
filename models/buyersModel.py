@@ -13,7 +13,7 @@ from db.dbModels import *
 class buyersModels:
     def __init__(self):
         #self.session = Session()
-        self.session = web.ctx
+        self.session = web.ctx.orm
     def getBuyersByCatid(self,cat):
         try:
             buyers = self.session.query(BuyersModel).filter_by(cat3=cat)

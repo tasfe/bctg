@@ -12,11 +12,11 @@ from db.dbModels import *
 
 class taskModels:
     def __init__(self):
-        self.session = Session()
+        self.db = web.ctx.orm
 
     def getTask(self,cust_id):
         try:
-            tasks = self.session.query(TaskModel).filter_by(custid=cust_id)
+            tasks = self.db.query(TaskModel).filter_by(custid=cust_id)
             return tasks
         except Exception,e:
             logging.error("taskModels.getTask,cust_id:%s  Exception:%s" % (cust_id,e))
@@ -24,7 +24,7 @@ class taskModels:
 
     def getNextTodoTask(self):
         try:
-            task = self.session.query(TaskModel).filter_by(status=0).orderby(id).first()
+            task = self.db.query(TaskModel).filter_by(status=0).orderby(id).first()
             return task
         except Exception,e:
             logging.error("taskModels.getNextTodoTask  Exception:%s" % (e))
@@ -36,3 +36,8 @@ class taskModels:
                                 catid=cat_id,
                                 category_level=category_level,
                                 content=content)
+            self.db.add(newTask)
+            return 1
+        except Exception,e:
+            logging.error("taskModels.getNextTodoTask  Exception:%s" % (e))
+            return 0

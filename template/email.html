@@ -6,15 +6,21 @@
           <legend>Legend</legend>
           <label>Label name</label>
           <label class="select">
-            <select name="cat" class="span1" value="类目">
+            <select name="cat1" id="cat1" class="span3">
               <option value="1">类目1</option>
               <option value="2">类目2</option>
             </select>
           </label>
+          <label class="select">
+              <select name="cat2" id="cat2" class="span3">
+                  <option value="21">二级类目1</option>
+                  <option value="22">二级类目2</option>
+              </select>
+              </label>
           <textarea name="content" rows="3"></textarea>
           <button type="submit" class="btn">发送</button>
           </fieldset>
         </form>
       </div>
-<ul class="nav nav-pills">  <li><a href="#">规则的链接</a></li>  <li class="dropdown" id="menutest1">    <a class="dropdown-toggle" data-toggle="dropdown" href="#menutest1">      下拉项      <b class="caret"></b>    </a>    <ul class="dropdown-menu">      <li><a href="#">动作</a></li>      <li><a href="#">另一个动作</a></li>      <li><a href="#">其他</a></li>      <li class="divider"></li>      <li><a href="#">被间隔的链接</a></li>    </ul>  </li>  <li class='active'>    <a data-toggle="dropdown" href="#menutest1">点击我看看</a>  </li></ul>
+       <div class="text"></div>
 {% endblock %}

@@ -6,7 +6,7 @@ Created on 13-1-15
 '''
 
 from models.buyersModel import *
-
+import json
 
 buyersmodels = buyersModels()
 
@@ -24,6 +24,11 @@ def getBuyersNumBycatid(**cat):
         if buyers == -1:
             return -1
         return len(buyers)
+
+def getcatByid(cat_id):
+    re = {"111":cat_id,"222":"222"}
+    rejson = json.dumps(re)
+    return rejson
 
 if __name__ == '__main__':
     print getBuyersNumBycatid(cat3=1234)

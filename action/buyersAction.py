@@ -6,7 +6,6 @@ Created on 13-1-15
 '''
 
 from models.buyersModel import *
-import json
 
 buyersmodels = buyersModels()
 

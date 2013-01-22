@@ -17,8 +17,9 @@ class catModels:
 
     def getCatsbyParentid(self,parent_id):
         try:
-            cats = self.session.query(CatModel).find(parentid = parent_id)
+            cats = self.session.query(CatModel).filter_by(parentid = parent_id).all()
             return cats
         except Exception,e:
-            logging.error("getCatsbyParentid,parent_id:%s  Exception:%s" % (parent_id,e))
+            logging.error("catModels.getCatsbyParentid,parent_id:%s  Exception:%s" % (parent_id,e))
+            logging.exception(e)
             return -1

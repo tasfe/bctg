@@ -16,7 +16,7 @@ class buyersModels:
         self.session = web.ctx.orm
     def getBuyersByCatid(self,cat):
         try:
-            buyers = self.session.query(BuyersModel).filter_by(cat3=cat)
+            buyers = self.session.query(BuyersModel).filter_by(cat3=cat).all()
             return buyers
         except Exception,e:
             logging.error("getBuyersByCatid,cat:%s  Exception:%s" % (cat,e))

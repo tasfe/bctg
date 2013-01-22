@@ -10,7 +10,7 @@ import json
 
 buyersmodels = buyersModels()
 
-def getBuyersNumBycatid(**cat):
+def getBuyersNumBycatid(cat):
     if cat.has_key("cat3"):
         cat = cat["cat3"]
     elif cat.has_key("cat2"):
@@ -25,10 +25,6 @@ def getBuyersNumBycatid(**cat):
             return -1
         return len(buyers)
 
-def getcatByid(cat_id):
-    re = {"111":cat_id,"222":"222"}
-    rejson = json.dumps(re)
-    return rejson
 
 if __name__ == '__main__':
     print getBuyersNumBycatid(cat3=1234)

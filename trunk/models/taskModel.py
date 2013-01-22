@@ -30,14 +30,18 @@ class taskModels:
             logging.error("taskModels.getNextTodoTask  Exception:%s" % (e))
             return 0
 
-    def addTask(self,cust_id,cat_id,category_level,content):
+    def addTask(self,cust_id,cat_id,category_level,title,content,status = 0):
         try:
             newTask = TaskModel(custid=cust_id,
                                 catid=cat_id,
                                 category_level=category_level,
-                                content=content)
+                                title = title,
+                                content=content,
+                                status=status)
             self.db.add(newTask)
+            self.db.commit()
             return 1
         except Exception,e:
-            logging.error("taskModels.getNextTodoTask  Exception:%s" % (e))
+            logging.error("taskModels.addTask  Exception:%s" % (e))
+            logging.exception(e)
             return 0

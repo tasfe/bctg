@@ -5,22 +5,28 @@
           <fieldset>
           <legend>Legend</legend>
           <label>Label name</label>
-          <label class="select">
-            <select name="cat1" id="cat1" class="span3">
-              <option value="1">类目1</option>
-              <option value="2">类目2</option>
-            </select>
+          <ul class="inline">
+              <li>请选择发送的类目</li>
+              <select name="cat1" id="cat1" class="span2">
+                <option value="-1">请选择一级类目</option>
+                {% for cat in cat1 %}
+                <option value="{{ cat}}">{{ cat1[cat] }}</option>
+                {% endfor %}
+                </select>
+              <select name="cat2" id="cat2" class="span2"></select>
+              <select name="cat3" id="cat3" class="span2"></select>
+              <div class="buyers">
+                <li class="buyersnotice">此类目下共有<li id="buyernum"></li>名买家</li>
+              </div>
+          </ul>
+          <label class="input-large">
+              <input type="text" id="title" class="span3" name="title">
           </label>
-          <label class="select">
-              <select name="cat2" id="cat2" class="span3">
-                  <option value="21">二级类目1</option>
-                  <option value="22">二级类目2</option>
-              </select>
-              </label>
-          <textarea name="content" rows="3"></textarea>
+          <label>
+            <textarea name="content" rows="3" id="content"></textarea>
+          </label>
           <button type="submit" class="btn">发送</button>
           </fieldset>
         </form>
       </div>
-       <div class="text"></div>
 {% endblock %}

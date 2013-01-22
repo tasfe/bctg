@@ -7,11 +7,12 @@ Created on 13-1-17
 
 from models.catModel import *
 
-
 catmodels = catModels()
 def getCatsbyParentid(parent_id = 0):
     if True:#todo 增加memcache
-        cats = catmodels.getCatsbyParentid(cat)
-        if cats == -1:
-            return {}
-        return cats
+        cats = catmodels.getCatsbyParentid(parent_id)
+        re = {}
+        if cats != -1:
+            for cat in cats:
+                re[cat.catid] = cat.catName
+        return re

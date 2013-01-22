@@ -6,9 +6,19 @@ Created on 13-1-12
 '''
 from common import *
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String,DateTime,Text
+from sqlalchemy import *
 
 Base = declarative_base()
+
+class customerModel(Base):
+    __tablename__ = 'customer'
+    id = Column(Integer, primary_key=True)
+    nick = Column(String(40),doc="nick")
+    type = Column(Integer(2),doc="用户类型")
+    def __init__(self, nick="",type=0):
+        self.nick = nick
+        self.type = type
+
 class BuyersModel(Base):
     __tablename__ = 'buyers'
     id = Column(Integer, primary_key=True)
@@ -29,7 +39,7 @@ class BuyersModel(Base):
         self.updateDate = updateDate
 
 class CatModel(Base):
-    __tablename__ = 'Cat'
+    __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
     catid= Column(Integer(5),doc="类目id")
     catName = Column(String(40),doc="类目名称")
@@ -38,7 +48,7 @@ class CatModel(Base):
     status = Column(Integer(2),doc="状态")
     sortorder = Column(Integer(5),doc="排序值")
     sorttype = Column(Integer(2),doc="排序类型")
-    updateDate = Column(DateTime,doc="更新时间")
+    updateDate = Column(TIMESTAMP,nullable=False, default=func.current_timestamp(),doc="时间")
     def __init__(self, catid=0, catName='', parentid=0,categorylevel=0,status=0,sortorder=0,sorttype=0,updateDate=''):
         self.catid = catid
         self.catName = catName
@@ -56,14 +66,20 @@ class TaskModel(Base):
     custid = Column(Integer, doc="发起任务的用户id")
     catid= Column(Integer(5),doc="发送目标的类目id")
     category_level = Column(Integer(2),doc="类目级别")
+    title = Column(String(40),doc="标题")
     content = Column(Text,doc="发送内容")
     status = Column(Integer(2),doc="状态：0，未发送；1，发送成功；2，开始发送；3，发送失败")
-    def __init__(self, custid=0,catid=0,category_level=0,content="",status=-1):
+    createDate = Column(TIMESTAMP,nullable=False, default=func.current_timestamp(),doc="建立时间")
+    updateDate = Column(DateTime,doc="更新时间")
+    def __init__(self, custid=0,catid=0,category_level=0,title="",content="",status=0,createDate="",updateDate=""):
         self.custid = custid
-        self.Catid = Catid
+        self.catid = catid
         self.category_level = category_level
+        self.title = title
         self.content = content
         self.status = status
+        self.createDate = createDate
+        self.updateDate = updateDate
 
 metadata = Base.metadata
 

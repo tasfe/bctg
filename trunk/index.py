@@ -10,6 +10,10 @@ from urls import url
 import os
 from view import *
 from common import *
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 
 app = web.application(url, globals())
 app.add_processor(load_sqla)

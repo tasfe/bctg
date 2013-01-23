@@ -20,3 +20,6 @@ def addTask(args):
     content = args["content"]
     print content
     return taskmodels.addTask(custid,catid,category_level,title,content)
+
+def getTaskByCustid(custid):
+    return taskmodels.getTask(custid)

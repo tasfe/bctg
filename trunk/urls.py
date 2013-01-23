@@ -15,4 +15,5 @@ url = ("/", "view.indexView.IndexHandler",
        "/test","view.testView.testHandler",
        "/cat","view.emailView.catHandler",
        "/getbuyersnum","view.emailView.getbuyernumHandler",
+       "/tasklist","view.taskView.tasklistHandler",
     )

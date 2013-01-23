@@ -16,10 +16,11 @@ class taskModels:
 
     def getTask(self,cust_id):
         try:
-            tasks = self.db.query(TaskModel).filter_by(custid=cust_id)
+            tasks = self.db.query(TaskModel).filter_by(custid=cust_id).all()
             return tasks
         except Exception,e:
             logging.error("taskModels.getTask,cust_id:%s  Exception:%s" % (cust_id,e))
+            logging.exception(e)
             return 0
 
     def getNextTodoTask(self):

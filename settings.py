@@ -21,8 +21,8 @@ setting=dict(
 dbname="mysql"
 dbuser="bctg"
 dbpassword="bctg"
-dbaddress="127.0.0.1"
-dbport="8306"
+dbaddress="10.232.39.55"
+dbport="3306"
 dbdbase="bctg"
 Echo=True
 

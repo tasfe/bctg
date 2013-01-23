@@ -1,0 +1,23 @@
+{% extends "Base.html" %}
+{% block body %}
+      <div class="jumbotron">
+          <table class="table table-bordered" id="tasklist">
+              <tr>
+                  <td>任务类型</td>
+                  <td>目标类目</td>
+                  <td>推广内容</td>
+                  <td>任务状态</td>
+                  <td>队列位置</td>
+              </tr>
+              {% for task in tasklist %}
+              <tr>
+                  <td>{{ task.type }}</td>
+                  <td>{{ task.catid }}</td>
+                  <td>{{ task.title }}</td>
+                  <td>{{ task.status }}</td>
+                  <td>{{ task.position}]</td>
+              </tr>
+              {% endfor %}
+          </table>
+      </div>
+{% endblock %}
